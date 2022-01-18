@@ -107,6 +107,7 @@ if __name__ == "__main__":
         '--log', default="INFO",
         help='the log level (DEBUG, INFO, WARNING, ERROR, or CRITICAL)')
     parser.add_argument('data_root', type=str, help='Data root')
+    parser.add_argument('--speaker_id', type=str, default="225")
 
     args = parser.parse_args()
 
@@ -117,7 +118,8 @@ if __name__ == "__main__":
     data_root = args.data_root
 
     # Do for all speakers
-    speakers = vctk.available_speakers
+    #speakers = vctk.available_speakers
+    speakers = [args.speaker_id]
 
     # Collect all transcripts/wav files
     td = vctk.TranscriptionDataSource(data_root, speakers=speakers)
